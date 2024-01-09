@@ -140,7 +140,7 @@ namespace NonLinearFitter_NeurosimV3 {
       for (int i = 0; i < fittedLTDs.Count; i++) {
         Point point = new() {
           X = (double)(fittedLTDs.Count - i - 1) / (fittedLTDs.Count - 1),
-          Y = fittedLTDs[i].Y
+          Y = fittedLTDs[fittedLTDs.Count - i - 1].Y
         };
         reverseFittedLTDs.Add(point);
       }

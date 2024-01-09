@@ -47,7 +47,7 @@ namespace NonLinearFitter_NeurosimV3 {
             crt_LTD.Series.Clear();
 
             _loadedLTP = new NormalizedData(_loadedRawLtpLtd.LTPs, NormalizedData.DataType.Forward);
-            _loadedLTD = new NormalizedData(_loadedRawLtpLtd.LTDs, NormalizedData.DataType.Reverse);
+            _loadedLTD = new NormalizedData(_loadedRawLtpLtd.LTDs, NormalizedData.DataType.Forward);
             InitializeControlsForRawData();
           } catch (Exception ex) {
             MessageBox.Show(ex.Message, "Error");
@@ -139,13 +139,13 @@ namespace NonLinearFitter_NeurosimV3 {
       grd_FittedLTD.RefreshDataSource();
 
       _fittedLtpSeries = new Series("Fitted_LTP", ViewType.Line);
-      (_fittedLtpSeries.View as LineSeriesView).LineStyle.Thickness = 3;
+      (_fittedLtpSeries.View as LineSeriesView).LineStyle.Thickness = 5;
       for (int i = 0; i < _fittedLTP.Values.Count; i++)
         _fittedLtpSeries.Points.Add(new SeriesPoint(_fittedLTP.Values[i].Pulse.ToString("0.000E0"),
                                                     _fittedLTP.Values[i].Conductance.ToString("0.000E+0")));
 
       _fittedLtdSeries = new Series("Fitted_LTD", ViewType.Line);
-      (_fittedLtdSeries.View as LineSeriesView).LineStyle.Thickness = 3;
+      (_fittedLtdSeries.View as LineSeriesView).LineStyle.Thickness = 5;
       for (int i = 0; i < _fittedLTD.Values.Count; i++)
         _fittedLtdSeries.Points.Add(new SeriesPoint(_fittedLTD.Values[i].Pulse.ToString("0.000E+0"),
                                                     _fittedLTD.Values[i].Conductance.ToString("0.000E+0")));
